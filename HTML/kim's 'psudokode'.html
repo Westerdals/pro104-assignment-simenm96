@@ -19,18 +19,18 @@
 <h1>The Task Manager</h1>
 
 <form onsubmit="handleSubmit(event)">
-    <h2>Add Team Member</h2>
+    <h2>Add Team Member</h2> <!-- Insert Team Member inn i localStorage -->
     <input name="memberName" , placeholder="Member's Name" />
     <input type="submit" />
 </form>
 
 <form onsubmit="handleSubmit(event)">
-    <h2>Add Task</h2>
+    <h2>Add Task</h2> <!-- Insert Task inn i localStorage -->
     <input name="task" , placeholder="Task" />
     <input type="submit" />
 </form>
 
-<h2>Configure Tasks</h2>
+<h2>Configure Tasks</h2> <!-- Hent medlem og oppgave fra localStorage fra drop down meny, og legg denne kombinasjonen til i localStorage -->
 <form onsubmit="handleSubmit(event)">
   <label for="selectMember">Choose member:</label>
   <select id="selectMember">
@@ -43,7 +43,7 @@
     <input type="submit" />
 </form>
 
-<h2>Current Tasks:</h2>
+<h2>Current Tasks:</h2> <!-- Hent ut "Configure Task" sin info fra localStorage, og list den ut -->
   <ul>
     <li>MEMBER, TASK</li>
   </ul>
