@@ -1,0 +1,72 @@
+<script>
+
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        const memberName = document.querySelector("[name='memberName']").value; // Spesifisere et sett med objekter, (finn et element p� siden som har attributer name med verdi memberName)
+        const task = document.querySelector("[name='task']").value;
+
+        const product = {
+            memberName, task,
+        };
+
+        const productList = [product];
+        window.localStorage.setItem("productList", JSON.stringify(productList));
+    }
+
+</script>
+
+<h1>The Task Manager</h1>
+
+<form onsubmit="handleSubmit(event)">
+    <h2>Add Team Member</h2>
+    <input name="memberName" , placeholder="Member's Name" />
+    <input type="submit" />
+</form>
+
+<form onsubmit="handleSubmit(event)">
+    <h2>Add Task</h2>
+    <input name="task" , placeholder="Task" />
+    <input type="submit" />
+</form>
+
+<h2>Configure Tasks</h2>
+<form onsubmit="handleSubmit(event)">
+  <label for="selectMember">Choose member:</label>
+  <select id="selectMember">
+    <option value="etc">MEMBER</option>
+  </select>
+  <label for="selectTtask">and desired task:</label>
+  <select id="selectTask">
+    <option value="etc">TASK</option>
+  </select>
+    <input type="submit" />
+</form>
+
+<h2>Current Tasks:</h2>
+  <ul>
+    <li>MEMBER, TASK</li>
+  </ul>
+
+<div id="productList"></div>
+
+<script>
+
+    const productList = JSON.parse(window.localStorage.getItem("productList")) || [];
+
+    if (productList == null) {
+        productList = [];
+    }
+
+    if (productList != null) {
+        const productListEl = document.getElementById("productList");
+
+        for (const product of productList) {
+            const productEl = document.createElement("div");
+            productEl.innerText = product.memberName + " " product.task;
+            productListEl.appendChild(productEl);
+        }
+
+    }
+
+</script>
