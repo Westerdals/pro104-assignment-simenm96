@@ -1,6 +1,6 @@
 <script>
 
-    function handleSubmit(event) {
+    function createNewProduct(event) {
         event.preventDefault();
 
         const productName = document.querySelector("[name='productName']").value; // Spesifisere et sett med objekter, (finn et element på siden som har attributer name med verdi productName)
@@ -10,20 +10,22 @@
         const description = document.querySelector("[name='description']").value;
 
         const product = {
-            productName, category, price, description
+            productName, category, price, picture, description
         };
 
+        console.log(product);
+
         const productList = [product];
-        window.localStorage.setItem("productList", JSON.stringyfy([productList]));
+        window.localStorage.setItem("productList", JSON.stringify(productList));
+
+        event.target.reset();
     }
 
 </script>
 
-<h1>Welcome to the webshop</h1>
+<h1>Welcome to the webshop</h1 <h2>Add a product</h2>
 
-<h2>Add a product</h2>
-
-<form onsubmit="handleSubmit(event)">
+<form onsubmit="createNewProduct(event)">
     <input name="productName" , placeholder="name" />
     <input name="category" , placeholder="Category" />
     <input name="price" , placeholder="12.99" />
@@ -38,21 +40,14 @@
 
 <script>
 
-    const productList = JSON.parse(window.localStorage.getItem("productList")) || [];
+    const productList = JSON.parse(window.localStorage.getItem("productList"));
 
-    if (productList == null) {
-        productList = [];
-    }
+    const productListEl = document.getElementById("productList");
 
-    if (productList != null) {
-        const productListEl = document.getElementById("productList");
-
-        for (const product of productList) {
-            const productEl = document.createElement("div");
-            productEl.innerText = product.productName + " price: " + product.price + ", description: " + product.description + " " product.category;
-            productListEl.appendChild(productEl);
-        }
-
+    for (const product of productList) {
+        const productEl = document.createElement("div");
+        productEl.innerText = product.productName + " price: " + product.price + ", description: " + product.description + " " + product.category;
+        productListEl.appendChild(productEl);
     }
 
 </script>
