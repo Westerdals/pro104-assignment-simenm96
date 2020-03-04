@@ -1,0 +1,95 @@
+<html>
+
+<head>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <style>
+    </style>
+</head>
+
+<body>
+    <script>
+        function CreateNewProduct(event) {
+            event.preventDefault();
+
+            const name = document.querySelector("[name='name']").value;
+            const price = document.querySelector("[name='price']").value;
+            const description = document.querySelector("[name='description']").value;
+            const image = document.querySelector("[name='image']").files[0].name;
+
+            const product = { name, price, description };
+
+            console.log(product);
+
+            const productList = JSON.parse(window.localStorage.getItem("productList")) || [];
+            productList.push(product);
+            window.localStorage.setItem("productList", JSON.stringify(productList));
+            renderProductList();
+
+            event.target.reset();
+
+        }
+    </script>
+
+
+    <h1> Workshop </h1>
+
+    <h2> add new product </h2>
+
+    <form onsubmit="CreateNewProduct(event)">
+        <div>
+            <label>Name:
+                <div><input name="name" placeholder="Product title to show headlines" /></div>
+            </label>
+        </div>
+        <div>
+            <label>Price:
+                <div><input name="price" placeholder="10.99" /></div>
+            </label>
+        </div>
+        <div>
+            <label>Image:
+                <div><input name="image" type="file" /></div>
+            </label>
+        </div>
+        <div>
+            <label>Description:
+                <div><textarea name="description" placeholder="Product description"></textarea></div>
+            </label>
+        </div>
+        <div>
+            <input type="submit" />
+        </div>
+    </form>
+
+    <h2> Our products </h2>
+
+    <div id="productList"></div>
+
+    <script>
+
+        function renderProductList() {
+            const productList = JSON.parse(window.localStorage.getItem("productList")) || [];
+            const productListE1 = document.getElementById("productList");
+            productListE1.innerHTML = "";
+            for (const product of productList) {
+                const productE1 = document.createElement("div");
+                const { name, price, description } = product;
+                productE1.innerHTML = "<h4>" + name + "</h4>" +
+                    "<div>" + description + "</div>" +
+                    "<div><small>Price:" + price + "</small></div>"
+                productListE1.appendChild(productE1);
+            }
+        }
+
+        renderProductList();
+
+        window.addEventListener("storage", function (event) {
+            if (event.key === "productList") {
+                renderProductList();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
