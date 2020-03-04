@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+
+  <title>Task Manager</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    
+  <script src="/JS/script.js"></script>
+    <!-- Henter inn og kjører JavaScript-->
+
+  <div class="Main-Container">
+    <!-- Laget for å ha en position relative, slik at vi kan bruke position absolute inni Container (mer struktur) -->
+
+    <h1>Task Manager</h1>
+
+    <div class="grid">
+
+      <div id="adder-div">
+        <form onsubmit="handleSubmit(event)">
+          <h2>Add Team Member</h2> <!-- Insert Team Member inn i localStorage -->
+          <input name="memberName" , placeholder="Member's Name" />
+          <input onclick="myAudio" type="submit" />
+        </form>
+      </div>
+
+      <div id="task-div">
+        <form onsubmit="handleSubmit(event)">
+          <h2>Add Task</h2> <!-- Insert Task inn i localStorage -->
+          <input name="task" , placeholder="Task" />
+          <input type="submit" />
+        </form>
+      </div>
+
+      <div id="configure-div">
+        <h2>Configure Tasks</h2>
+        <!-- Hent medlem og oppgave fra localStorage fra drop down meny, og legg denne kombinasjonen til i localStorage -->
+        <br>
+        <br>
+        <form onsubmit="handleSubmit(event)">
+          <label for="selectMember">Choose member:</label>
+          <select id="selectMember">
+            <option value="etc">MEMBER</option>
+          </select>
+          <br>
+          <br>
+          <br>
+          <br>
+          <label for="selectTtask">and desired task:</label>
+          <select id="selectTask">
+            <option value="etc">TASK</option>
+          </select>
+          <br>
+          <br>
+          <br>
+          <br>
+          <input type="submit" />
+        </form>
+
+      </div>
+
+      <br>
+      <br>
+        
+      
+        
+        
+    </div>
+
+      <h2>Current Tasks:</h2> <!-- Hent ut "Configure Task" sin info fra localStorage, og list den ut -->
+      <br>
+      <div id="Lister" class="grid2">
+        <ul>Member
+        <li></li>
+      </ul>
+        
+          <ul>Task
+        <li></li>
+        </ul>
+          
+          <ul>Set tasks
+            <li></li>
+          </ul>
+        </div>
+  </div>
+
+    
+</body>
+
+</html>
