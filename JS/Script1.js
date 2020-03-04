@@ -1,7 +1,7 @@
 // JavaScript source code
 
-<script>
-
+//function that prints out a list off all members that are put in
+//***NEED TO FIX BUG where its gone when you reload site
 function renderMemberList(){
    
 const memberList =JSON.parse(window.localStorage.getItem("memberList")) || [];
@@ -15,7 +15,8 @@ for (const member of memberList) {
     memberListEl.appendChild(memberEl);
 }
 }
-
+// renders a list with all the tasks that are put in
+//***NEED TO FIX THE SAME BUG
 function renderTaskList(){
 const taskList =JSON.parse(window.localStorage.getItem("taskList")) || [];
 const taskListEl = document.getElementById("taskList");
@@ -28,7 +29,7 @@ for (const task of taskList) {
     taskListEl.appendChild(taskEl);
 }
 }
-
+//function that
 function renderToDoList(){
 const toDoList =JSON.parse(window.localStorage.getItem("toDoList")) || [];
 const toDoListEl = document.getElementById("toDoList");
@@ -41,7 +42,7 @@ for (const toDo of toDoList) {
     toDoListEl.appendChild(toDoEl);
  }
 }
-
+// when you enter a name in the first textbox and press send the name will be sent to localStorage in the list/array called memberList
  function createNewMember(event) {
         event.preventDefault();
         const name = document.querySelector("[name='name']").value; 
@@ -102,16 +103,33 @@ for(var i2 = 0; i2 < taskOptions.length; i2++) {
         const toDo = {
         member, task,}
         
-         const toDoList =JSON.parse(window.localStorage.getItem("toDoList")) || [];
-         toDoList.push(toDo);
+        const toDoList =JSON.parse(window.localStorage.getItem("toDoList")) || [];
+        toDoList.push(toDo);
        
-        window.localStorage.setItem("toDoList", JSON.stringify(toDoList));
-         
-         renderToDoList();
+        window.localStorage.setItem("toDoList", JSON.stringify(toDoList)); 
+        renderToDoList();
         event.target.reset();
     }
 
-</script>
+renderMemberList();
+renderTaskList();
+renderToDoList();
+
+
+window.addEventListener("storage", function(event){
+  if (event.key === "memberList") {
+    renderMemberList();
+  }
+});
+
+window.addEventListener("storage", function(event){
+  if (event.key === "taskList") {
+    renderTaskList();
+  }
+});
+
+
+
 
 
 
