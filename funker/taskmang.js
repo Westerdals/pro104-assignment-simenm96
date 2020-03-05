@@ -76,14 +76,22 @@ for (const toDo of toDoList) {
         event.preventDefault();
         const name = document.querySelector("[name='name']").value; 
         const member = {name};
+        var denied = name;
+  if (denied == "") {
+   
+    return false;
+  }else {
+
         const memberList =JSON.parse(window.localStorage.getItem("memberList")) || [];
         memberList.push(member);
         window.localStorage.setItem("memberList", JSON.stringify(memberList));
         renderMemberList();
       
         event.target.reset();
-    }
+    }}
  
+
+  
 
 
 
@@ -93,6 +101,11 @@ for (const toDo of toDoList) {
         const name2 = document.querySelector("[name='task']").value;
         
        const task = {name2};
+       var denied = name2;
+  if (denied == "") {
+   
+    return false;
+  }else {
       
 const taskList =JSON.parse(window.localStorage.getItem("taskList")) || [];
         taskList.push(task);
@@ -100,7 +113,7 @@ const taskList =JSON.parse(window.localStorage.getItem("taskList")) || [];
         renderTaskList();
 
         event.target.reset();
-    }
+    }}
  
 
 
