@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="style1.css">
+<body>
+
+<div class="Main-Container">
+  <h1>Task Manager</h1>
+
+  <div id="grid">
+    <div id="adder-div">
+    <form onsubmit="createNewMember(event)">
+      <div>
+        <label>Name:
+        <div><input name="name" placeholder="Name of member"/></div>
+        </label>
+      </div>
+      <input type="submit" />
+    </form>
+    </div>
+
+<div id="task-div">
+  <form onsubmit="createNewTask(event)">
+     <div>
+        <label>Add task:
+         <div><input name="task" placeholder="Task to do"/></div>
+        </label>
+     </div>
+     <input type="submit" />
+       
+  </form>
+</div>
+  
+  
+
+<div id="configure-div">
+<h2>Configure Tasks</h2> <!-- Hent medlem og oppgave fra localStorage fra drop down meny, og legg denne kombinasjonen til i localStorage -->
+<form onsubmit="handleSubmit(event)">
+  <label for="select-Member">Choose member:</label>
+  <select id="select-member">
+ 
+   
+  </select>
+  <label for="select-task">and desired task:</label>
+  <select id="select-task">
+
+    
+  </select>
+    <input type="submit" />
+</div>    
+</div>    
+
+</form>
+<div id="grid">
+<h3>Current members</h3>
+<h3>Current tasks</h3>
+<h3>Members and their tasks</h3>
+</div>
+<div id="grid">
+
+<div id="memberList" class="lists"></div>
+
+  <div id="taskList" class="lists"></div>
+
+  <div id=toDoList class="lists"> </div>
+
+</div>
+<body>
+
+<script src="taskmang.js"></script>

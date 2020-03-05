@@ -1,0 +1,85 @@
+body {
+    margin:50px;
+    background-image: url(bodybackground.jfif);
+    background-size: cover;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+/* Main Containers */
+.Main-Container {
+    padding: 25px;
+    margin: auto;
+    background-color: steelblue;
+    width: 1400px;
+    height: auto;
+    text-align: center;
+    border-radius: 2%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Divs */
+#grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+#adder-div {
+    margin: 20px;;
+    padding: 20px;
+    width: 280px;
+    border-width: thin;
+    background-color: rgba(68, 134, 189, 0.842);
+    border-color: rgb(76, 150, 211);
+    text-align: center;
+    border-radius: 5%;
+    box-shadow: 0px 0.2px 7px rgb(52, 88, 143);
+    left: 100px;
+}
+
+#task-div {
+    margin: 20px;
+    padding: 20px;
+    width: 280px;
+    border-width: thin;
+    background-color: rgba(68, 134, 189, 0.842);
+    border-color: rgb(76, 150, 211);
+    text-align: center;
+    border-radius: 5%;
+    box-shadow: 0px 0.2px 7px rgb(52, 88, 143);
+}
+
+#configure-div {
+    margin: 20px;
+    padding: 20px;
+    width: 280px;
+    border-width: thin;
+    background-color: rgba(68, 134, 189, 0.842);
+    border-color: rgb(76, 150, 211);
+    text-align: center;
+    border-radius: 5%;
+    box-shadow: 0px 0.2px 7px rgb(52, 88, 143);
+}
+
+/*Inputs*/
+input {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+/*fonts*/
+h1 {
+ color: ivory ;
+ text-shadow: rgb(0, 0, 0) 2px;
+}
+
+.lists {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+   
+}
