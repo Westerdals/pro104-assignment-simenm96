@@ -1,95 +1,67 @@
-<html>
-
-<head>
-    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-    <style>
-    </style>
-</head>
-
+<link rel="stylesheet" href="style1.css">
 <body>
-    <script>
-        function CreateNewProduct(event) {
-            event.preventDefault();
 
-            const name = document.querySelector("[name='name']").value;
-            const price = document.querySelector("[name='price']").value;
-            const description = document.querySelector("[name='description']").value;
-            const image = document.querySelector("[name='image']").files[0].name;
+<div class="Main-Container">
+  <h1>Task Manager</h1>
 
-            const product = { name, price, description };
-
-            console.log(product);
-
-            const productList = JSON.parse(window.localStorage.getItem("productList")) || [];
-            productList.push(product);
-            window.localStorage.setItem("productList", JSON.stringify(productList));
-            renderProductList();
-
-            event.target.reset();
-
-        }
-    </script>
-
-
-    <h1> Workshop </h1>
-
-    <h2> add new product </h2>
-
-    <form onsubmit="CreateNewProduct(event)">
-        <div>
-            <label>Name:
-                <div><input name="name" placeholder="Product title to show headlines" /></div>
-            </label>
-        </div>
-        <div>
-            <label>Price:
-                <div><input name="price" placeholder="10.99" /></div>
-            </label>
-        </div>
-        <div>
-            <label>Image:
-                <div><input name="image" type="file" /></div>
-            </label>
-        </div>
-        <div>
-            <label>Description:
-                <div><textarea name="description" placeholder="Product description"></textarea></div>
-            </label>
-        </div>
-        <div>
-            <input type="submit" />
-        </div>
+  <div id="grid">
+    <div id="adder-div">
+    <form onsubmit="createNewMember(event)">
+      <div>
+        <label><h2>Add a member</h2>
+        <div><input name="name" placeholder="Name of member"/></div>
+        </label>
+      </div>
+      <input type="submit" />
     </form>
+    </div>
 
-    <h2> Our products </h2>
+<div id="task-div">
+  <form onsubmit="createNewTask(event)">
+     <div>
+        <label><h2>Add task</h2>
+         <div><input name="task" placeholder="Task to do"/></div>
+        </label>
+     </div>
+     <input type="submit" />
+       
+  </form>
+</div>
+  
+  
 
-    <div id="productList"></div>
+<div id="configure-div">
+<h2>Configure Tasks</h2> <!-- Hent medlem og oppgave fra localStorage fra drop down meny, og legg denne kombinasjonen til i localStorage -->
+<form onsubmit="handleSubmit(event)">
+  <label for="select-Member">Choose member:</label>
+  <select id="select-member">
+ 
+   
+  </select>
+  <label for="select-task">and desired task:</label>
+  <select id="select-task">
 
-    <script>
+    
+  </select>
+    <input type="submit" />
+</div>    
+</div>    
 
-        function renderProductList() {
-            const productList = JSON.parse(window.localStorage.getItem("productList")) || [];
-            const productListE1 = document.getElementById("productList");
-            productListE1.innerHTML = "";
-            for (const product of productList) {
-                const productE1 = document.createElement("div");
-                const { name, price, description } = product;
-                productE1.innerHTML = "<h4>" + name + "</h4>" +
-                    "<div>" + description + "</div>" +
-                    "<div><small>Price:" + price + "</small></div>"
-                productListE1.appendChild(productE1);
-            }
-        }
+</form>
+<div id="grid">
+<h3>Current members</h3>
+<h3>Current tasks</h3>
+<h3>Members and their tasks</h3>
+</div>
+<div id="grid">
 
-        renderProductList();
+<div id="memberList" class="lists"></div>
 
-        window.addEventListener("storage", function (event) {
-            if (event.key === "productList") {
-                renderProductList();
-            }
-        });
-    </script>
+  <div id="taskList" class="lists"></div>
 
-</body>
+  <div id=toDoList class="lists"> </div>
 
-</html>
+</div>
+<body>
+
+<script src="taskmang.js"></script>
